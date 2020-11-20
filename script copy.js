@@ -20,33 +20,34 @@ var LOWER = "abcdefghijklmnopqrstuvwxyz";
 }
 
   function generatePassword(){
-  var chars = passwordLength;  
-  var passwordLength = parseInt (prompt("How many characters would you like your password to be?"));
-  
-  var password ="Your password is "
+  var passwordLength = prompt("How many characters would you like your password to be?");
+  console.log(passwordLength);
+   while(parseInt(passwordLength) < 8
+  || parseInt(passwordLength) > 128){
+  passwordLength = prompt("You must have a min of 8 and a max of 128.  Please re-enter length of password");  
+   }
+   
   var uselower= confirm("Would you like lowercase letters?");
   if(uselower){
+    var password ="Your password is "
     var chars = passwordLength + LOWER;
   }
-  
-  
-  var password ="Your password is "
+
+
   var useupperCase = confirm("Would you like uppercase letters?");
   if(useupperCase){
-    var chars = passwordLength + LOWER + UPPER;
-  
+  var chars = passwordLength + LOWER + UPPER;
   }
-  var password ="Your password is "
+
   var usenumberChar = confirm("Would you like  numbers?");
   if(usenumberChar){
     var chars = passwordLength + LOWER + UPPER + NUMBER;
   }
-    
   
-  var password ="Your password is "
   var usespecialChar =  confirm("Would you like  special characters?");
   if(usespecialChar){
-    var chars = passwordLength + LOWER + UPPER + NUMBER + SPECIAL;   
+    var chars = passwordLength + LOWER + UPPER + NUMBER + SPECIAL;
+    
   }
    
   for(var i = 0; i < passwordLength; i++){
