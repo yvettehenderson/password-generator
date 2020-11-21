@@ -20,34 +20,44 @@ var LOWER = "abcdefghijklmnopqrstuvwxyz";
 }
 
   function generatePassword(){
-  var chars = passwordLength;  
-  var passwordLength = parseInt (prompt("How many characters would you like your password to be?"));
+    var passwordLength = prompt("How many characters would you like your password to be?");
+    while(parseInt(passwordLength) < 8
+    || parseInt(passwordLength) > 128){
+    passwordLength = prompt("You must have a min of 8 and a max of 128.  Please re-enter length of password");  
+    }
   
   var password ="Your password is "
-  var uselower= confirm("Would you like lowercase letters?");
+  var uselower= confirm("Click ok for lowercase letters?");
   if(uselower){
-    var chars = passwordLength + LOWER;
-  }
-  
-  
-  var password ="Your password is "
-  var useupperCase = confirm("Would you like uppercase letters?");
-  if(useupperCase){
-    var chars = passwordLength + LOWER + UPPER;
-  
-  }
-  var password ="Your password is "
-  var usenumberChar = confirm("Would you like  numbers?");
-  if(usenumberChar){
-    var chars = passwordLength + LOWER + UPPER + NUMBER;
-  }
+  var chars = LOWER;
+
     
+  } 
+  
   
   var password ="Your password is "
-  var usespecialChar =  confirm("Would you like  special characters?");
+  var useupperCase = confirm("Click ok for uppercase letters?");
+  if(useupperCase){
+    var chars = chars + UPPER;
+  
+    
+
+  } 
+  var password ="Your password is "
+  var usenumberChar = confirm("Click ok  for numbers?");
+  console.log(usenumberChar)
+  if(usenumberChar){
+    var chars = chars + NUMBER;
+
+    
+  }  
+   
+  var password ="Your password is "
+  var usespecialChar =  confirm("Click ok for  special characters?");
   if(usespecialChar){
-    var chars = passwordLength + LOWER + UPPER + NUMBER + SPECIAL;   
-  }
+    var chars = chars + SPECIAL;   
+
+  } 
    
   for(var i = 0; i < passwordLength; i++){
     var random = Math.floor(Math.random() * chars.length);
